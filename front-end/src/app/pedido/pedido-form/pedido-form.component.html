@@ -1,0 +1,120 @@
+<mat-card-title>
+        Novo Pedido
+      </mat-card-title>
+      
+      <mat-card-content>
+      
+        <form class="form-container">
+
+            <mat-form-field>
+                <mat-label>Status</mat-label>
+                <mat-select placeholder="Escolha o status" required
+                  name="status" [(ngModel)]="pedido.status">
+                  <mat-option *ngFor="let status of status" [value]="status._id">
+                    {{ status.nome }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label>Data do Pedido</mat-label>
+                <input matInput [matDatepicker]="data" placeholder="Selecione a data do pedido" required name="data" [(ngModel)]="pedido.data">
+                <mat-datepicker-toggle matSuffix [for]="data"></mat-datepicker-toggle>
+                <mat-datepicker #data></mat-datepicker>
+              </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Cliente</mat-label>
+            <mat-select placeholder="Escolha o cliente" required
+              name="cliente" [(ngModel)]="pedido.cliente">
+              <mat-option *ngFor="let cliente of clientes" [value]="cliente._id">
+                {{ cliente.nome }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+            <div class="mat-form-field-wrapper div-checkbox">
+            <mat-label>Embalado para Viagem? &nbsp;</mat-label>
+            <mat-checkbox required></mat-checkbox>      
+          </div>
+
+          <div class="mat-form-field-wrapper div-checkbox">
+                <mat-label>Entrega? &nbsp;</mat-label>
+                <mat-checkbox required></mat-checkbox>      
+              </div>
+
+              <mat-form-field>
+                  <mat-label>Observação</mat-label>
+                  <input matInput placeholder="Digite uma observação para o pedido" required>
+                </mat-form-field>
+
+              <mat-card-title><br>
+                Informações da Entrega
+              </mat-card-title>
+
+              <mat-form-field>
+                  <mat-label>Endereço</mat-label>
+                  <mat-select placeholder="Escolha o endereço" required
+                    name="endereco" [(ngModel)]="pedido.endereco">
+                    <mat-option *ngFor="let endereco of enderecos" [value]="endereco._id">
+                      {{ endereco.rua }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Número</mat-label>
+                    <mat-select placeholder="Escolha o número" required
+                      name="numero" [(ngModel)]="pedido.numero">
+                      <mat-option *ngFor="let numero of numeros" [value]="numero._id">
+                        {{ endereco.numero }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+             
+
+
+      
+              <mat-card-title><br>
+                Itens do Pedido
+              </mat-card-title>
+
+              <mat-form-field>
+                  <mat-label>Item</mat-label>
+                  <mat-select placeholder="Escolha o item" required
+                    name="item" [(ngModel)]="pedido.item">
+                    <mat-option *ngFor="let item of itens" [value]="item._id">
+                      {{ item.nome }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Quantidade</mat-label>
+                    <input matInput placeholder="Digite a quantidade do pedido" required>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                      <mat-label>Preço</mat-label>
+                      <mat-select placeholder="Selecione o Preço" required
+                        name="preco" [(ngModel)]="pedido.preco">
+                        <mat-option *ngFor="let preco of precos" [value]="preco._id">
+                          {{ item.preco }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Observação do Item</mat-label>
+                        <input matInput placeholder="Digite uma observação para o item" required>
+                      </mat-form-field>
+  
+      
+        </form>
+      
+      </mat-card-content>
+
+      <mat-card-actions class="center-buttons">
+          <button mat-flat-button color="primary" (click)="salvar()">Salvar</button>
+          <button mat-flat-button color="warn" (click)="cancelar()">Cancelar</button>
+        </mat-card-actions>
