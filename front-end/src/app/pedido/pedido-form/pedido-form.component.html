@@ -35,18 +35,19 @@
 
             <div class="mat-form-field-wrapper div-checkbox">
             <mat-label>Embalado para Viagem? &nbsp;</mat-label>
-            <mat-checkbox required></mat-checkbox>      
+            <mat-checkbox required name="viagem" [(ngModel)]="pedido.viagem"></mat-checkbox>   
           </div>
 
           <div class="mat-form-field-wrapper div-checkbox">
                 <mat-label>Entrega? &nbsp;</mat-label>
-                <mat-checkbox required></mat-checkbox>      
+                <mat-checkbox required name="entrega" [(ngModel)]="pedido.entrega"></mat-checkbox>   
               </div>
 
               <mat-form-field>
-                  <mat-label>Observação</mat-label>
-                  <input matInput placeholder="Digite uma observação para o pedido" required>
-                </mat-form-field>
+                <mat-label>Observação</mat-label>
+                <input matInput placeholder="Digite uma observação para o pedido" required
+                  name="observacao" [(ngModel)]="pedido.observacao">
+              </mat-form-field>
 
               <mat-card-title><br>
                 Informações da Entrega
@@ -82,32 +83,34 @@
               <mat-form-field>
                   <mat-label>Item</mat-label>
                   <mat-select placeholder="Escolha o item" required
-                    name="item" [(ngModel)]="pedido.item">
-                    <mat-option *ngFor="let item of itens" [value]="item._id">
+                    name="item" [(ngModel)]="pedidoitem.item">
+                    <mat-option *ngFor="let item of itens" [value]="pedidoitem._id">
                       {{ item.nome }}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
 
-                <mat-form-field>
+                  <mat-form-field>
                     <mat-label>Quantidade</mat-label>
-                    <input matInput placeholder="Digite a quantidade do pedido" required>
+                    <input matInput placeholder="Digite a quantidade do pedido" required
+                      name="quantidade" [(ngModel)]="pedidoitem.quantidade">
                   </mat-form-field>
 
+
                   <mat-form-field>
-                      <mat-label>Preço</mat-label>
-                      <mat-select placeholder="Selecione o Preço" required
-                        name="preco" [(ngModel)]="pedido.preco">
-                        <mat-option *ngFor="let preco of precos" [value]="preco._id">
-                          {{ item.preco }}
-                        </mat-option>
-                      </mat-select>
+                    <mat-select disabled placeholder="Preço" required
+                    name="valor" [(ngModel)]="pedidoitem.valor">
+                    <mat-option *ngFor="let item of itens" [value]="pedidoitem._id">
+                      {{ item.valor }}
+                    </mat-option>
+                  </mat-select>
                     </mat-form-field>
 
-                    <mat-form-field>
-                        <mat-label>Observação do Item</mat-label>
-                        <input matInput placeholder="Digite uma observação para o item" required>
-                      </mat-form-field>
+                      <!-- <mat-form-field> -->
+                        <!-- <mat-label>Observação do Item</mat-label> -->
+                        <!-- <input matInput placeholder="Digite uma observação para o item" required -->
+                          <!-- name="observacao" [(ngModel)]="observacao._id"> -->
+                      <!-- </mat-form-field> -->
   
       
         </form>

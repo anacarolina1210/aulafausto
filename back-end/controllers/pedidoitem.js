@@ -12,6 +12,7 @@ module.exports = function() {
             // Callback se der certo
             function() {
                 // HTTP 201: Criado
+                res.send(null);
                 res.send(201).end();
             },
             // Callback se der errado
@@ -68,6 +69,7 @@ module.exports = function() {
         PedidoItem.findByIdAndUpdate(req.body._id, req.body).exec().then(
             function() {
                 //HTTP 204: OK sem dados
+                res.send(null);
                 res.send(204).end();
             },
         function(erro) {

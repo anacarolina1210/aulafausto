@@ -12,6 +12,7 @@ module.exports = function() {
             // Callback se der certo
             function() {
                 // HTTP 201: Criado
+                res.send(null);
                 res.send(201).end();
             },
             // Callback se der errado

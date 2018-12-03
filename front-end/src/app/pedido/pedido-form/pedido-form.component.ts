@@ -3,7 +3,9 @@ import { PedidoService } from '../../services/pedido.service';
 import { ClienteService } from '../../services/cliente.service';
 import { EnderecoService } from '../../services/endereco.service';
 import { StatusService } from '../../services/status.service';
+import { PedidoItemService } from '../../services/pedidoitem.service';
 import { ItemService } from '../../services/item.service';
+import { ValorService } from '../../services/valor.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatSnackBar } from '@angular/material';
 
@@ -19,7 +21,9 @@ export class PedidoFormComponent implements OnInit {
     private clienteSrv: ClienteService,
     private enderecoSrv: EnderecoService,
     private statusSrv: StatusService,
+    private pedidoitemSrv: PedidoItemService,
     private itemSrv: ItemService,
+    private valorSrv: ValorService,
     private router: Router,
     private actRoute: ActivatedRoute,
     private snackBar: MatSnackBar
@@ -29,7 +33,9 @@ export class PedidoFormComponent implements OnInit {
   public clientes: any = []; // Vetor vazio
   public enderecos: any = [];
   public status: any = [];
+  public pedidoitem: any = [];
   public itens: any = [];
+  public valores: any = [];
 
   ngOnInit() {
 
@@ -73,10 +79,26 @@ export class PedidoFormComponent implements OnInit {
       erro => console.error(erro)
     );
 
+    this.pedidoitemSrv.listar().subscribe(
+      dados => {
+        this.pedidoitem = dados;
+        console.log(this.pedidoitem);
+      },
+      erro => console.error(erro)
+    );
+
     this.itemSrv.listar().subscribe(
       dados => {
         this.itens = dados;
         console.log(this.itens);
+      },
+      erro => console.error(erro)
+    );
+
+    this.valorSrv.listar().subscribe(
+      dados => {
+        this.valores = dados;
+        console.log(this.valores);
       },
       erro => console.error(erro)
     );
